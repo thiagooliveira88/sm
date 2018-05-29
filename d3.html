@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/4.13.0/d3.js" integrity="sha256-j2LsvgOlQFIb2Mphb+tX7d5pNmFdpsJU+s5GNo3z63g=" crossorigin="anonymous"></script>
+    <title></title>
+  </head>
+  <body>
+    <p>Hello!</p>
+    <svg  style="width:500;height:500;background-color:sky">
+
+    </svg>
+    <script type="text/javascript">
+      var svg = d3.select("svg");
+      var water = svg.append('rect').attr('width',500)
+          .attr('height',500)
+          .attr('y',50)
+          .attr('fill','deepskyblue');
+      var line = svg.append('rect').attr('width',10)
+          .attr('height',200)
+          .attr('x',145)
+          .attr('y',150)
+          .attr('fill','grey');
+      var buoy = svg.append('circle')
+          .attr('r',30)
+          .attr('cx',150)
+          .attr('cy',150)
+          .attr('fill','black ');
+    function cutLine(){
+      line.remove();
+      buoy.transition().duration(4000)
+        .attr('cy',40)
+        .ease(d3.easeElasticOut);
+    }
+    line.on('click',cutLine);
+    </script>
+  </body>
+</html>
